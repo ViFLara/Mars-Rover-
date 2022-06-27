@@ -1,6 +1,6 @@
-package entities;
+package src.entities;
 
-import enums.Direction;
+import src.enums.Direction;
 
 public class Rover {
     private Integer limitX;
