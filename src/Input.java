@@ -52,10 +52,8 @@ public class Input {
                 rover.process(movement);
                 rover.printPosition();
             }
-
+            System.out.println("Type the position: ");
         }
-        System.out.println("Press enter to final");
         sc.close();
-
     }
 }
