@@ -38,27 +38,18 @@ public class Rover {
         }
     }
     private void process(Character command) {
-        if (command.equals('L')) {
-            turnLeft();
-        } else if (command.equals('R')) {
-            turnRight();
-        } else if (command.equals('M')) {
-            move();
-        } else {
-            throw new IllegalArgumentException(
-                    "Type the correct letter");
-        }
+        if (command.equals('L')) turnLeft();
+        else if (command.equals('R')) turnRight();
+        else if (command.equals('M')) move();
+        else throw new IllegalArgumentException("Type the correct letter");
+
     }
     private void move() {
-        if (facing == Direction.N) {
-            this.y++ ;
-        } else if (facing == Direction.E) {
-            this.x++ ;
-        } else if (facing == Direction.S) {
-            this.y--;
-        } else if (facing == Direction.W) {
-            this.x--;
-        }
+        if (facing == Direction.N) y++ ;
+        else if (facing == Direction.E) x++ ;
+        else if (facing == Direction.S) y--;
+        else if (facing == Direction.W) x--;
+
     }
     private void turnLeft() {
         if (facing == Direction.N) facing = Direction.W;
