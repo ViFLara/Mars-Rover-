@@ -23,8 +23,6 @@ public class Input {
 
         System.out.println("X: " + limitX +", Y: " + limitY);
 
-        rover.setLimit(limitX, limitY);
-
         System.out.println("Type the position: ");
 
         while(sc.hasNextLine()){

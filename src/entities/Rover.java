@@ -11,20 +11,12 @@ public class Rover {
     Direction facing = Direction.N;
     public Rover() {}
 
-    public Integer getLimitX() {
-        return limitX;
-    }
-
-    public Integer getLimitY() {
-        return limitY;
-    }
-
     public void setPosition(Integer x, Integer y, Direction facing) {
         this.x = x;
         this.y = y;
         this.facing = facing;
     }
-    public void setLimit(Integer limitX, Integer limitY) {
+    public void setlimitPlan(Integer limitX, Integer limitY) {
         this.limitX = limitX;
         this.limitY = limitY;
     }
@@ -52,15 +44,9 @@ public class Rover {
 
     }
     private void turnLeft() {
-        if (facing == Direction.N) facing = Direction.W;
-        else if (facing == Direction.W) facing = Direction.S;
-        else if (facing == Direction.S) facing = Direction.E;
-        else facing = Direction.N;
+      facing = this.facing.left();
     }
     private void turnRight() {
-        if (facing == Direction.N) facing = Direction.E;
-        else if (facing == Direction.E) facing = Direction.S;
-        else if (facing == Direction.S) facing = Direction.W;
-        else facing = Direction.N;
+       facing = this.facing.right();
     }
 }
