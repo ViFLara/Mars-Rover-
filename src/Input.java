@@ -1,57 +1,45 @@
 package src;
 
-import src.entities.Rover;
-import src.enums.Direction;
-
-import java.util.Objects;
+import src.instructions.Instructions;
+import src.limit.Limit;
+import src.position.Position;
+import src.rover.Rover;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Input {
-
     public static void main(String[] args) {
 
-        Rover rover = new Rover();
+        ArrayList<Rover> rovers = new ArrayList<>();
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Type the limit position: ");
+        System.out.println("Enter the limit position: ");
 
-        String limit = sc.nextLine();
+        Limit limit= InstructionParser.parseLimit(sc.nextLine());
 
-        Integer limitX = Integer.valueOf(limit.split(" ")[0]);
-        Integer limitY = Integer.valueOf(limit.split(" ")[1]);
+        System.out.println("Enter a rover position: ");
 
-        System.out.println("X: " + limitX +", Y: " + limitY);
-
-        System.out.println("Type the position: ");
-
-        while(sc.hasNextLine()){
-            String line = sc.nextLine();
-            if(line.equals("")){
+        while(sc.hasNextLine()) {
+            String position = sc.nextLine();
+            if(position.equals("e")){
                 break;
             }
-            System.out.println(line);
-
-            Integer X = Integer.valueOf(line.split(" ")[0]);
-            Integer Y = Integer.valueOf(line.split(" ")[1]);
-            String D = line.split(" ")[2];
-
-            if (X > limitX || Y > limitY) throw new IllegalArgumentException("Type the correct number");
-            if ((!Objects.equals(D, "N")) && (!Objects.equals(D, "W")) &&
-                    (!Objects.equals(D, "E")) && !Objects.equals(D, "S")) {
-                throw new IllegalArgumentException("Type the correct direction");
-            } else {
-                rover.setPosition(X, Y, Direction.valueOf(D));
-
-                System.out.println("Type the movement: ");
-
-                String movement = sc.nextLine();
-
-                rover.process(movement);
-                rover.printPosition();
+            if (!Validator.validatePosition(position, limit)) {
+                System.out.println("Invalid data. Enter the position again");
+                continue;
             }
-            System.out.println("Type the position: ");
+            System.out.println(position);
+            Position position1 = parsePosition(position, limit);
+            Instructions instructions = parseInstruction(position1);
+            Rover rover = new Rover(instructions, position1);
+            rovers.add(rover);
+
+            System.out.println("Enter the instructions:");
+            rover.roverInstructions(sc.nextLine());
+            System.out.println("Enter a new rover position or e to exit:");
         }
+
+        rovers.forEach(r -> System.out.println(r.getPosition()));
         sc.close();
-    }
-}
+}}
