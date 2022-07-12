@@ -2,10 +2,16 @@ package src;
 
 import src.instructions.Instructions;
 import src.limit.Limit;
+import src.parse.InstructionParser;
 import src.position.Position;
 import src.rover.Rover;
+import src.validator.Validator;
+
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import static src.parse.InstructionParser.parseInstruction;
+import static src.parse.InstructionParser.parsePosition;
 
 public class Input {
     public static void main(String[] args) {
@@ -42,4 +48,5 @@ public class Input {
 
         rovers.forEach(r -> System.out.println(r.getPosition()));
         sc.close();
-}}
+    }
+}
