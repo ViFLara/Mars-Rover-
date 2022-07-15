@@ -10,8 +10,6 @@ import src.validator.Validator;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static src.parse.InstructionParser.parseInstruction;
-
 public class Input {
     public static void main(String[] args) {
 
@@ -36,7 +34,7 @@ public class Input {
             }
             System.out.println(position);
             Position position1 = InstructionParser.parsePosition(position, limit);
-            Instructions instructions = parseInstruction(position1);
+            Instructions instructions = InstructionParser.parseInstruction(position1);
             Rover rover = new Rover(instructions, position1);
             rovers.add(rover);
 
@@ -47,5 +45,4 @@ public class Input {
 
         rovers.forEach(r -> System.out.println(r.getPosition()));
         sc.close();
-    }
-}
+}}
