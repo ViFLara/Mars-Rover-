@@ -4,6 +4,7 @@ import src.enums.Direction;
 import src.instructions.Instructions;
 import src.limit.Limit;
 import src.position.Position;
+import src.rover.Rover;
 
 public class InstructionParser {
     public static Limit parseLimit(String limit) {
@@ -21,6 +22,10 @@ public class InstructionParser {
 
     public static Instructions parseInstruction(Position position) {
         return new Instructions(position, position.getDirection());
+    }
+
+    public static Rover parseRover(Instructions instructions, Position position) {
+        return new Rover(instructions, position);
     }
 }
 

@@ -18,9 +18,7 @@ public class Input {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Enter the limit position: ");
-
         Limit limit= InstructionParser.parseLimit(sc.nextLine());
-
         System.out.println("Enter a rover position: ");
 
         while(sc.hasNextLine()) {
@@ -32,10 +30,10 @@ public class Input {
                 System.out.println("Invalid data. Enter the position again");
                 continue;
             }
-            System.out.println(position);
+
             Position position1 = InstructionParser.parsePosition(position, limit);
             Instructions instructions = InstructionParser.parseInstruction(position1);
-            Rover rover = new Rover(instructions, position1);
+            Rover rover = InstructionParser.parseRover(instructions, position1);
             rovers.add(rover);
 
             System.out.println("Enter the instructions:");
