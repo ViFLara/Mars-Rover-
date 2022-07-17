@@ -7,9 +7,7 @@ public enum Direction {
             return Direction.E;
         }
         @Override
-        public Direction left() {
-            return Direction.W;
-        }
+        public Direction left() { return Direction.W; }
     },
 
     E('E') {
@@ -19,9 +17,7 @@ public enum Direction {
         }
 
         @Override
-        public Direction left() {
-            return Direction.N;
-        }
+        public Direction left() { return Direction.N; }
     },
 
     W('W') {
@@ -31,9 +27,7 @@ public enum Direction {
         }
 
         @Override
-        public Direction left() {
-            return Direction.S;
-        }
+        public Direction left() { return Direction.S; }
     },
 
     S('S') {
@@ -43,9 +37,7 @@ public enum Direction {
         }
 
         @Override
-        public Direction left() {
-            return Direction.E;
-        }
+        public Direction left() { return Direction.E; }
     };
 
     private final char n;
