@@ -9,6 +9,16 @@ public class Limit {
         this.limitY = limitY;
     }
     public boolean limit(int x, int y) {
-        return x > limitX || y > limitY || x < 0 || y < 0;
+        return validGt(x, limitX) ||
+                validGt(y, limitY) ||
+                validLt(x, 0) ||
+                validLt(y, 0);
+    }
+    private boolean validGt(int value, int valueT) {
+        return value > valueT;
+    }
+
+    private boolean validLt(int value, int valueT) {
+        return value < valueT;
     }
 }
