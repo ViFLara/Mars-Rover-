@@ -3,6 +3,7 @@ package src.limit;
 public class Limit {
     private int limitX;
     private int limitY;
+
     public Limit(int limitX, int limitY) {
         this.limitX = limitX;
         this.limitY = limitY;

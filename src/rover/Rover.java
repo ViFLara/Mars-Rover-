@@ -18,6 +18,7 @@ public class Rover {
     public void roverInstructions(String instructions) {
         instructions.chars().mapToObj(c -> (char) c).forEach(this::roverInstructions);
     }
+
     private void roverInstructions(Character instruction) {
         if (instruction.equals('L')) instructions.turnLeft();
         else if (instruction.equals('R')) instructions.turnRight();

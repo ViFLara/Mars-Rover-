@@ -18,6 +18,7 @@ public class InstructionParser {
             Direction direction = Direction.valueOf(positionArray[2]);
             return new Position(x, y, direction, limit);
     }
+
     public static Instructions parseInstruction(Position position) {
         return new Instructions(position, position.getDirection());
     }

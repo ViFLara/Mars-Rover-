@@ -5,8 +5,11 @@ import src.limit.Limit;
 
 public class Position {
     private  int x;
+
     private  int y;
+
     private Direction facing;
+
     private Limit limit;
 
     public Position(int x, int y, Direction facing, Limit limit) {
@@ -15,23 +18,31 @@ public class Position {
         this.facing = facing;
         this.limit = limit;
     }
+
     public Direction getDirection() {
         return facing;
     }
 
-    public Position updatePosition(String axis, Integer value){
-        if(axis.equals("X")){
-            if(!limit.limit(x + value,y)) {
-                x = x + value;
-            }
-        }
+    public Position updatePosition(String axis, int value){
+        if(axis.equals("X")) validX(value);
         else{
-            if(!limit.limit(x,y + value)){
-                y = y + value;
-                return this;
-            }
+            Position x1 = getPosition(value);
+            if (x1 != null) return x1;
         }
         return this;
+    }
+
+    private void validX(int value) {
+        if(!limit.limit(x + value,y)) {
+            x = x + value;
+        } }
+
+    private Position getPosition(int value) {
+        if(!limit.limit(x,y + value)){
+            y = y + value;
+            return this;
+        }
+        return null;
     }
 
     @Override

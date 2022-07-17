@@ -6,7 +6,9 @@ import src.limit.Limit;
 public class Validator {
     public static boolean validatePosition(String position, Limit limit) {
         int x;
+
         int y;
+
         try {
             String[] positionArray = position.split(" ");
             String xStr = positionArray[0];
@@ -20,6 +22,7 @@ public class Validator {
         }
         return !validateLimit(x, y, limit);
     }
+
     private static boolean validateLimit(int x, int y, Limit limit) {
         return limit.limit(x, y);
     }
